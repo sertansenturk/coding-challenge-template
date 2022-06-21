@@ -38,7 +38,7 @@ setup(
     maintainer="Sertan Senturk",
     maintainer_email="contact AT sertansenturk DOT com",
     url="https://github.com/sertansenturk/challenge_template",
-    description="Makam Recognition Experiments",
+    description="Python/Docker envirronments for coding/take-home challenges",
     classifiers=[
         "Development Status :: 4 - Beta",
         "Environment :: Console",
@@ -49,12 +49,19 @@ setup(
         "Natural Language :: English",
         "Operating System :: POSIX :: Linux",
         "Programming Language :: Python :: 3",
-        "Topic :: Multimedia :: Sound/Audio :: Analysis",
         "Topic :: Scientific/Engineering :: Information Analysis",
     ],
     platforms="Linux",
     license="agpl 3.0",
-    keywords=("machine-learning " "information-retrieval " "computational-analysis"),
+    keywords=(
+        "machine-learning,"
+        "information-retrieval,"
+        "computational-analysis,"
+        "coding-challenge,"
+        "take-home-assignment,"
+        "docker,"
+        "python"
+    ),
     packages=find_packages(EXP_DIR),
     package_dir={"": EXP_DIR},
     python_requires="==3.8.*",
