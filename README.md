@@ -1,5 +1,7 @@
 # challenge_template
 
+Template repository to kickstart a Python/Docker environment for coding/take-home challenges.
+
 ## Prerequisites
 
 - **Docker (suggested):** Please refer to the [documentation](https://docs.docker.com/get-docker/) for installation instructions.

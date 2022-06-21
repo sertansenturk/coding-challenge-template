@@ -2,4 +2,4 @@
 
 ## challenge_template v0.1.0
 
-- Init repo
+- Init repo from template
