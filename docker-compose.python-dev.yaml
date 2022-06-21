@@ -1,0 +1,23 @@
+version: "2.4"
+services:
+    unit-tests:
+        build:
+            context: .
+            dockerfile: ./docker/python-dev/Dockerfile
+        command: bash -c "cd /app/src && source docker/python-dev/utils/run-unit-tests.sh"
+        volumes:
+            - ./:/app/src
+    format:
+        build:
+            context: .
+            dockerfile: ./docker/python-dev/Dockerfile
+        command: bash -c "cd /app/src && source docker/python-dev/utils/run-format.sh"
+        volumes:
+            - ./:/app/src
+    lint:
+        build:
+            context: .
+            dockerfile: ./docker/python-dev/Dockerfile
+        command: bash -c "cd /app/src && source docker/python-dev/utils/run-lint.sh"
+        volumes:
+            - ./:/app/src

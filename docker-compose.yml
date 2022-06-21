@@ -1,0 +1,9 @@
+version: "2.4"
+services:
+    challenge_template:
+        build:
+            context: .
+            dockerfile: ./docker/app/Dockerfile
+        command: bash -c "cd /app/ && source docker/app/utils/run.sh"
+        volumes:
+            - ./:/app/
