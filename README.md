@@ -19,7 +19,7 @@ make
 
 ## Running notebooks
 
-I did exploratory data analysis (EDA) on the data and learning strategies parallel to implementing a solution. The EDA was done in Jupyter notebooks, stored in [./notebooks/](./notebooks/).
+It is typical to carry out exploratory data analysis (EDA) on the data and test different approaches alongside implementing a solution. Jupyter is a good ecosystem for such work.
 
 If you want to run the notebooks locally, you can start Jupyter Lab by running in the terminal:
 

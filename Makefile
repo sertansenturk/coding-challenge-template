@@ -32,7 +32,7 @@ unit-tests: build-python-dev
 	docker-compose -f docker-compose.python-dev.yaml run unit-tests
 
 clean-docker: down
-	docker system prune -f
+	docker rmi $$(docker images --filter "dangling=true" -q --no-trunc)
 
 clean-python:
 	find . -name '*.pyc' -exec rm -f {} +
