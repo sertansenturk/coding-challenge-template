@@ -7,7 +7,7 @@ FROM python:3.8
 #     apt-get clean
 
 RUN python -m pip install --upgrade pip
-WORKDIR /app/
+WORKDIR /batch/
 
 COPY ./requirements.txt /app/
 RUN pip install -r requirements.txt

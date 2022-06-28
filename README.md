@@ -44,12 +44,12 @@ make post QUERY='some message'
 # Received POST request: 'some message'
 ```
 
-### Running the app in Docker
+### Running the batch app in Docker
 
 For batch use cases, you could run the workflow built on the functionality in `challenge_template` package as:
 
 ```bash
-make app
+make batch
 ```
 
 Currently, the (dummy) template driver prints out the command line arguments passed to the driver.

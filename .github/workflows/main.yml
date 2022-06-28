@@ -29,5 +29,5 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      - name: Run the app and run integration tests
+      - name: Run the integration tests
         run: make integration-tests  # command runs `make build` first
