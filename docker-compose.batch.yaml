@@ -1,0 +1,9 @@
+version: "2.4"
+services:
+    challenge_template:
+        build:
+            context: .
+            dockerfile: ./docker/batch/Dockerfile
+        command: bash -c "cd /batch/ && source docker/batch/utils/run.sh"
+        volumes:
+            - ./:/batch/

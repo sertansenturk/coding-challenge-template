@@ -1,19 +1,19 @@
 FROM python:3.8
 
 RUN python -m pip install --upgrade pip
-WORKDIR /api
+WORKDIR /app
 
-COPY docker/api/requirements.txt /api/api_requirements.txt
+COPY docker/api/requirements.txt /app/api_requirements.txt
 RUN pip install -r api_requirements.txt
 
-COPY requirements.txt /api/
+COPY requirements.txt /app/
 RUN pip install -r requirements.txt
 
-COPY docker/api/utils/api.py /api/
+COPY docker/api/utils/entrypoint.py /app/
 
-COPY ./src/ /api/src/
-COPY ./setup.py /api/
+COPY ./src/ /app/src/
+COPY ./setup.py /app/
 RUN python3 -m pip install .
 
 ENTRYPOINT ["python"]
-CMD ["api.py"]
+CMD ["entrypoint.py"]

@@ -1,12 +1,12 @@
 .PHONY: api post build-api down-api \
-	app build-app down-app \
+	batch build-batch down-batch \
 	build-jupyter jupyter down-jupyter \
 	build-python-dev format lint unit-tests integration-tests \
 	clean-docker clean-python
 
 QUERY=some dummy message
 
-down: down-api down-app down-jupyter down-python-dev
+down: down-api down-batch down-jupyter down-python-dev
 
 api: build-api
 	docker-compose -f docker-compose.api.yaml up
@@ -20,14 +20,14 @@ build-api:
 down-api:
 	docker-compose -f docker-compose.api.yaml down --remove-orphans
 
-app: build-app
-	docker-compose -f docker-compose.app.yaml up
+batch: build-batch
+	docker-compose -f docker-compose.batch.yaml up
 
-build-app:
-	docker-compose -f docker-compose.app.yaml build
+build-batch:
+	docker-compose -f docker-compose.batch.yaml build
 
-down-app:
-	docker-compose -f docker-compose.app.yaml down --remove-orphans
+down-batch:
+	docker-compose -f docker-compose.batch.yaml down --remove-orphans
 
 # below commands could be modularized further but it's not the point of the challenge
 build-jupyter:

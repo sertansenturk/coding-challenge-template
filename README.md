@@ -2,22 +2,59 @@
 
 Template repository to kickstart a Python/Docker environment for coding/take-home challenges.
 
+## Technology Stack
+
+- **Language:** Python 3.8
+- **Containerization:** [Docker](https://www.docker.com/)
+- **Serving:** [flask](https://flask.palletsprojects.com/en/2.1.x/)
+- **Continous Integration:** [Github Actions](https://github.com/giffgaff/coding-test-for-sertansenturk/actions)
+
 ## Prerequisites
 
-- **Docker (suggested):** Please refer to the [documentation](https://docs.docker.com/get-docker/) for installation instructions.
-- **Python 3.8:** Required if you want to run the code locally on the terminal. Please follow the [official guideline](https://www.python.org/about/gettingstarted/) for installation instructions.
+- **Docker:** Please refer to the [documentation](https://docs.docker.com/get-docker/) for installation instructions.
 
 ## How to run
 
-### Running in Docker
+### Starting the API
 
-For convenience, you could run the whole pipeline by simply executing in the terminal:
+To build & start the application, execute in the terminal:
 
 ```bash
-make
+make api
 ```
 
-## Running notebooks
+The above command will start a Docker-compose stack. The stack has a single container with the `challenge_template` package installed behind [flask](https://flask.palletsprojects.com/en/2.1.x/).
+
+Once the stack is up and running, the `template` API will be exposed at `localhost:5000/template`.
+
+#### Posting queries
+
+Open a new terminal window and enter a query, e.g.:
+
+```bash
+curl -X POST localhost:5000/template -d 'some message'
+```
+
+In the above case, the (dummy) template API returns the message back with additional information as the response.
+
+If you are lazy to remember the full curl command, you could run:
+
+```bash
+make post QUERY='some message'
+# Received POST request: 'some message'
+```
+
+### Running the batch app in Docker
+
+For batch use cases, you could run the workflow built on the functionality in `challenge_template` package as:
+
+```bash
+make batch
+```
+
+Currently, the (dummy) template driver prints out the command line arguments passed to the driver.
+
+### Running notebooks
 
 It is typical to carry out exploratory data analysis (EDA) on the data and test different approaches alongside implementing a solution. Jupyter is a good ecosystem for such work.
 
@@ -33,7 +70,7 @@ Clicking the URL should take you the Jupyter Lab on your browser of choice.
 
 Note the first build could take around 6-7 minutes, depending on your machine and internet connection.
 
-## Running unittests
+### Running unittests
 
 Run in the terminal:
 
@@ -45,7 +82,7 @@ which runs unit tests using pytest.
 
 The unittests are also run on Github actions after each push: [link](https://github.com/sertansenturk/challenge_template/actions).
 
-## Code formatting
+### Code formatting
 
 In the terminal run:
 
@@ -55,7 +92,7 @@ make format
 
 which formats the Python code in the repo using [black](https://black.readthedocs.io/en/stable/).
 
-## Code linting
+### Code linting
 
 In the terminal run:
 
