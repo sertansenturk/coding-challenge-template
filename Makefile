@@ -1,7 +1,7 @@
 .PHONY: api post build-api down-api \
 	app build-app down-app \
 	build-jupyter jupyter down-jupyter \
-	build-python-dev format lint unit-tests \
+	build-python-dev format lint unit-tests integration-tests \
 	clean-docker clean-python
 
 QUERY=some dummy message
@@ -19,9 +19,6 @@ build-api:
 
 down-api:
 	docker-compose -f docker-compose.api.yaml down --remove-orphans
-
-integration-tests:
-	./integration-tests/test_api.sh
 
 app: build-app
 	docker-compose -f docker-compose.app.yaml up
@@ -58,6 +55,9 @@ lint: build-python-dev
 
 unit-tests: build-python-dev
 	docker-compose -f docker-compose.python-dev.yaml run unit-tests
+
+integration-tests:
+	./integration-tests/test_api.sh
 
 clean-docker: down
 	docker rmi $$(docker images --filter "dangling=true" -q --no-trunc)
