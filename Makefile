@@ -12,13 +12,16 @@ api: build-api
 	docker-compose -f docker-compose.api.yaml up
 
 post:
-	curl -X POST localhost:5000/dummy -d '$(QUERY)' -w "\n"
+	curl -X POST localhost:5000/template -d '$(QUERY)' -w "\n"
 
 build-api:
 	docker-compose -f docker-compose.api.yaml build
 
 down-api:
 	docker-compose -f docker-compose.api.yaml down --remove-orphans
+
+integration-tests:
+	./integration-tests/test_api.sh
 
 app: build-app
 	docker-compose -f docker-compose.app.yaml up

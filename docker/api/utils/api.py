@@ -10,16 +10,16 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-@api.route("/dummy", methods=["POST"])
-def dummy_post():
+@api.route("/template", methods=["POST"])
+def template_post():
     """Returns whatever was posted back as a UTF-8 string"""
     logger.info("App ver %s: Received %s request", __version__, request.method)
     if request.method == "POST":
         data = request.get_data().decode("utf-8")
-        dummy_str = (
+        result = (
             f"[App ver {__version__}] Received {request.method} request: '{data}'"
         )
-        return dummy_str
+        return result
 
 
 if __name__ == "__main__":
