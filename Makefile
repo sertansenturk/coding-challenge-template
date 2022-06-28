@@ -1,13 +1,26 @@
-.PHONY: api build-api down-api \
+.PHONY: api post build-api down-api \
 	app build-app down-app \
 	build-jupyter jupyter down-jupyter \
 	build-python-dev format lint unit-tests \
 	clean-docker clean-python
 
-# up: build
-# 	docker-compose up
+QUERY=some dummy message
 
-app:
+down: down-api down-app down-jupyter down-python-dev
+
+api: build-api
+	docker-compose -f docker-compose.api.yaml up
+
+post:
+	curl -X POST localhost:5000/dummy -d '$(QUERY)' -w "\n"
+
+build-api:
+	docker-compose -f docker-compose.api.yaml build
+
+down-api:
+	docker-compose -f docker-compose.api.yaml down --remove-orphans
+
+app: build-app
 	docker-compose -f docker-compose.app.yaml up
 
 build-app:
@@ -30,6 +43,9 @@ down-jupyter:
 
 build-python-dev:
 	docker-compose -f docker-compose.python-dev.yaml build
+
+down-python-dev:
+	docker-compose -f docker-compose.python-dev.yaml down --remove-orphans
 
 format: build-python-dev
 	docker-compose -f docker-compose.python-dev.yaml run format
