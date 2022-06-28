@@ -5,9 +5,9 @@ make build-api  # force build so the api starts fast
 docker-compose -f docker-compose.api.yaml up -d  # run detached so we can continue
 sleep 5
 RESPONSE=$(curl -X POST localhost:5000/template -d 'some message')
-make down
+make down-api
 
-EXPECTED_RESPONSE="[App ver 0.1.0] Received POST request: 'some message'"
+EXPECTED_RESPONSE="Received POST request: 'some message'"
 if [ "$RESPONSE" == "$EXPECTED_RESPONSE" ]; then
     echo "Returned correct response: \"$RESPONSE\""
     echo "Integration test finished successfully!"

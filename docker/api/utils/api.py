@@ -2,7 +2,8 @@ import logging
 import os
 
 from flask import Flask, request
-from challenge_template import __version__
+
+from challenge_template.api_request_parser import APIRequestParser
 
 api = Flask(__name__)
 
@@ -13,13 +14,9 @@ logger = logging.getLogger(__name__)
 @api.route("/template", methods=["POST"])
 def template_post():
     """Returns whatever was posted back as a UTF-8 string"""
-    logger.info("App ver %s: Received %s request", __version__, request.method)
+    logger.info("Received %s request", request.method)
     if request.method == "POST":
-        data = request.get_data().decode("utf-8")
-        result = (
-            f"[App ver {__version__}] Received {request.method} request: '{data}'"
-        )
-        return result
+        return APIRequestParser.parse_post_request(request)
 
 
 if __name__ == "__main__":
