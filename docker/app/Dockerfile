@@ -1,9 +1,10 @@
 FROM python:3.8
 
-RUN apt-get update -y && \
-    apt-get -y install ffmpeg && \
-    apt-get -y autoremove && \
-    apt-get clean
+# Uncomment to install any additional lbraries
+# RUN apt-get update -y && \
+#     apt-get -y install ffmpeg && \
+#     apt-get -y autoremove && \
+#     apt-get clean
 
 RUN python -m pip install --upgrade pip
 WORKDIR /app/
