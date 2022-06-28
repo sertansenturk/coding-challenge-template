@@ -1,14 +1,20 @@
-.PHONY: up build down build-jupyter jupyter build-python-dev \
-	format lint unit-tests clean-docker clean-python
+.PHONY: api build-api down-api \
+	app build-app down-app \
+	build-jupyter jupyter down-jupyter \
+	build-python-dev format lint unit-tests \
+	clean-docker clean-python
 
-up: build
-	docker-compose up
+# up: build
+# 	docker-compose up
 
-build:
-	docker-compose build
+app:
+	docker-compose -f docker-compose.app.yaml up
 
-down:
-	docker-compose down --remove-orphans
+build-app:
+	docker-compose -f docker-compose.app.yaml build
+
+down-app:
+	docker-compose -f docker-compose.app.yaml down --remove-orphans
 
 # below commands could be modularized further but it's not the point of the challenge
 build-jupyter:
@@ -18,6 +24,9 @@ build-jupyter:
 # you cannot reach Jupyter via browser with `docker-compose run jupyter`
 jupyter: build-jupyter
 	docker-compose -f docker-compose.jupyter.yaml up
+
+down-jupyter:
+	docker-compose -f docker-compose.jupyter.yaml down --remove-orphans
 
 build-python-dev:
 	docker-compose -f docker-compose.python-dev.yaml build
