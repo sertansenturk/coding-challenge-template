@@ -1,0 +1,8 @@
+version: "2.4"
+services:
+    api:
+        ports:
+            - "5000:5000"
+        build:
+            context: .
+            dockerfile: ./docker/api/Dockerfile
