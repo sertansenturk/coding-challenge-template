@@ -1,13 +1,13 @@
 FROM python:3.8
 
-# Uncomment to install any additional lbraries
+# Uncomment to install any additional libraries
 # RUN apt-get update -y && \
 #     apt-get -y install ffmpeg && \
 #     apt-get -y autoremove && \
 #     apt-get clean
 
 RUN python -m pip install --upgrade pip
-WORKDIR /batch/
+WORKDIR /app/
 
 COPY ./requirements.txt /app/
 RUN pip install -r requirements.txt
