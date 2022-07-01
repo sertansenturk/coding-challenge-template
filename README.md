@@ -7,7 +7,7 @@ Template repository to kickstart a Python/Docker environment for coding/take-hom
 - **Language:** Python 3.8
 - **Containerization:** [Docker](https://www.docker.com/)
 - **Serving:** [flask](https://flask.palletsprojects.com/en/2.1.x/)
-- **Continous Integration:** [Github Actions](https://github.com/giffgaff/coding-test-for-sertansenturk/actions)
+- **Continous Integration:** [Github Actions](https://github.com/sertansenturk/coding-challenge-template/actions)
 
 ## Prerequisites
 
